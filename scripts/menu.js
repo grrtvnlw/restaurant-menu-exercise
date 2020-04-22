@@ -1,4 +1,3 @@
-
 const menu = {
     breakfast: [
         {
@@ -131,20 +130,3 @@ const menu = {
         }
     ]
 };
-
-// const menu = document.querySelector('.js-menu');
-const container = document.querySelector('.js-main-content');
-
-function getCategories(obj) {
-    return Object.keys(obj);
-}
-
-console.log(getCategories(menu));
-
-function nameToListItem(name) {
-    const listItem = document.createElement('li');
-    listItem.textContent = name;
-    container.appendChild(listItem)
-}
-
-nameToListItem(getCategories(menu))
