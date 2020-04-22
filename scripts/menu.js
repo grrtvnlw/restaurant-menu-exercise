@@ -140,3 +140,11 @@ function getCategories(obj) {
 }
 
 console.log(getCategories(menu));
+
+function nameToListItem(name) {
+    const listItem = document.createElement('li');
+    listItem.textContent = name;
+    container.appendChild(listItem)
+}
+
+nameToListItem(getCategories(menu))
