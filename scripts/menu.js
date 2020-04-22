@@ -136,7 +136,7 @@ const menu = {
 const container = document.querySelector('.js-main-content');
 
 function getCategories(obj) {
-    console.log(Object.keys(obj));
+    return Object.keys(obj);
 }
 
-getCategories(menu);
+console.log(getCategories(menu));
