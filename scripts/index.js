@@ -74,6 +74,12 @@ function addClickHandler(arrOfElements) {
 // invoke the addClickHandler function on the the specific array
 addClickHandler(arrOfListItems);
 
+// Retrieve the value for a category name
+function getValue(name) {
+  console.log(menu[name])
+}
+// console.log(menu.breakfast)
+getValue("breakfast")
 
 ///////BONUS GOODIES////////
 
