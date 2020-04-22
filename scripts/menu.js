@@ -131,3 +131,12 @@ const menu = {
         }
     ]
 };
+
+// const menu = document.querySelector('.js-menu');
+const container = document.querySelector('.js-main-content');
+
+function getCategories(obj) {
+    console.log(Object.keys(obj));
+}
+
+getCategories(menu);
