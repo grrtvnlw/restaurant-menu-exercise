@@ -52,25 +52,30 @@ arrOfListItems.map(appendItems)
 
 // Medium exercise: Handle category list click
 
+// Add a click handler to each of the <li> elements
+// write the handleClick function 
 function handleClick(e) {
   console.log(e.target.textContent);
 }
 
 const listElement = document.querySelector('li');
-console.log(listElement)
+// console.log(listElement)
 
+// add the click event listener on the specific element
 listElement.addEventListener('click', handleClick)
 
+// write a function to add the click event listener to an array of elements
 function addClickHandler(arrOfElements) {
   arrOfElements.forEach(function(element) {
     element.addEventListener('click', handleClick);
   })
 }
 
+// invoke the addClickHandler function on the the specific array
 addClickHandler(arrOfListItems);
 
 
-///////
+///////BONUS GOODIES////////
 
 function handleClick(e) {
   let element = event.target;
