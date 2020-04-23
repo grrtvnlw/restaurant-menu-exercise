@@ -76,11 +76,28 @@ addClickHandler(arrOfListItems);
 
 // Retrieve the value for a category name
 function getValue(name) {
-  console.log(menu[name])
+  return menu[name];
 }
-// console.log(menu.breakfast)
-getValue("breakfast")
+console.log(getValue("dinner"))
 
+// Large exercise: Render food items to page
+
+// Create an itemToCard function
+function itemToCard(obj) {
+  const container = document.querySelector('.js-main-content');
+  const itemDiv = document.createElement('div');
+  itemDiv.setAttribute('class', 'card');
+  const itemH2 = document.createElement('h2');
+  const itemH3 = document.createElement('h3');
+  itemH2.textContent = obj.name;
+  itemH3.textContent = obj.price;
+  itemDiv.appendChild(itemH2);
+  itemDiv.appendChild(itemH3);
+  container.appendChild(itemDiv)
+
+}
+
+console.log(itemToCard(menu.lunch[0]))
 ///////BONUS GOODIES////////
 
 function handleClick(e) {
