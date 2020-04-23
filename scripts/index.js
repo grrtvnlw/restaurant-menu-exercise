@@ -4,31 +4,28 @@
 // Small exercises: Category list
 
 // Extract names of categories
-function getCategories(obj) {
-    return Object.keys(obj);
+function getCategories(menu) {
+    return Object.keys(menu);
 }
-// console.log(getCategories(menu));
 
 // Wrap names in <li> elements
 function nameToListItem(categoryName) {
   const listItem = document.createElement('li');
   listItem.textContent = categoryName
-  // console.log(listItem)
   return listItem
 }
-// nameToListItem("breakfast")
 
 // Write a function that transforms an array of category names to an array of <li>
-function categoriesToListItem(categories) {
-  const arrOfListItems = []
-  for (let i = 0; i < categories.length; i++) {
-    const listItem = nameToListItem(categories[i]);
-    arrOfListItems.push(listItem)
-  }
-  return arrOfListItems;
-}
+// function categoriesToListItem(categories) {
+//   const arrOfListItems = []
+//   for (let i = 0; i < categories.length; i++) {
+//     const listItem = nameToListItem(categories[i]);
+//     arrOfListItems.push(listItem)
+//   }
+//   return arrOfListItems;
+// }
 // Same thing using .map()
-function categoriesToListItem2(categories) {
+function categoriesToListItem(categories) {
   return categories.map(nameToListItem)
 }
 
@@ -43,12 +40,10 @@ function appendItems(element) {
 }
 
 // Render using .forEach()
-arrOfListItems.forEach(appendItems)
-// categoriesToListItem(getCategories(menu)).forEach(appendItems)
+// arrOfListItems.forEach(appendItems)
 
 // Render using .map()
 arrOfListItems.map(appendItems)
-// categoriesToListItem(getCategories(menu)).map(appendItems)
 
 // Medium exercise: Handle category list click
 
@@ -65,7 +60,6 @@ function handleClick(e) {
     cards.map(appendCardToMainContent); 
   }
 }
-// console.log(listElement)
 
 // add the click event listener on the specific element
 const listElement = document.querySelector('li');
@@ -90,30 +84,96 @@ console.log(getValue("dinner"))
 // Large exercise: Render food items to page
 
 // Create an itemToCard function
+// function itemToCard(obj) {
+//   const itemDiv = document.createElement('div');
+//   itemDiv.setAttribute('class', 'card');
+//   const itemH2 = document.createElement('h2');
+//   const itemH3 = document.createElement('h3');
+//   const pic = document.createElement('img')
+//   itemH2.textContent = obj.name;
+//   itemH3.textContent = obj.price;
+//   pic.setAttribute('src', obj.photo);
+//   pic.style.width = "80%";
+//   // pic.style.height = "80%"
+//   itemDiv.appendChild(itemH2);
+//   itemDiv.appendChild(itemH3);
+//   itemDiv.appendChild(pic)
+//   return itemDiv
+// }
+
+// Create an itemToCard function using render function
 function itemToCard(obj) {
-  const itemDiv = document.createElement('div');
-  itemDiv.setAttribute('class', 'card');
-  const itemH2 = document.createElement('h2');
-  const itemH3 = document.createElement('h3');
-  const pic = document.createElement('img')
-  itemH2.textContent = obj.name;
-  itemH3.textContent = obj.price;
-  pic.setAttribute('src', obj.photo);
-  pic.style.width = "80%";
-  // pic.style.height = "80%"
-  itemDiv.appendChild(itemH2);
-  itemDiv.appendChild(itemH3);
-  itemDiv.appendChild(pic)
-  return itemDiv
+  return `
+    <div class="card">
+      <h2>${obj.name}</h2>
+      <h3>${obj.price}</h3>
+      <img src=${obj.photo} width="80%">
+    </div>
+  `
 }
-// console.log(itemToCard(menu.lunch[0]))
 
 // Create an appendCardToMainContent function
 function appendCardToMainContent(card) {
   const container = document.querySelector('.js-main-content');
-  container.appendChild(card)
+  // container.appendChild(card)
+  let thingToAppend = document.createElement("div");
+  thingToAppend.innerHTML = card
+  container.appendChild(thingToAppend)
 }
 
+// Bonus 
+
+// Add a vegetarian filter
+// function createOptions() {
+//   return `
+//     <div class="options">
+//       <input type="radio" name="options" value="Vegetarian" id="Vegetarian">
+//       <label for="Vegetarian">Vegetarian</label>
+//       <input type="radio" name="options" value="Vegan" id="Vegan">
+//       <label for="Vegan">Vegan</label>
+//     </div>
+//   `
+// }
+
+// Add a vegetarian filter the old way
+function createOptions() {
+  const jsMenu = document.querySelector('.js-menu');
+  const optionsDiv = document.createElement('div');
+  const vegetarianDiv = document.createElement('div');
+  const veganDiv = document.createElement('div');
+  const p = document.createElement('p');
+  const vegetarianButton = document.createElement('input');
+  const vegetarianLabel = document.createElement('label');
+  vegetarianButton.setAttribute('type', 'radio');
+  vegetarianButton.setAttribute('id', 'Vegetarian');
+  vegetarianLabel.textContent = "Vegetarian";
+  vegetarianLabel.setAttribute('for', 'Vegetarian');
+  const veganButton = document.createElement('input');
+  const veganLabel = document.createElement('label');
+  veganButton.setAttribute('type', 'radio');
+  veganButton.setAttribute('id', 'Vegan');
+  veganLabel.textContent = "Vegan";
+  veganLabel.setAttribute('for', 'Vegan');
+  vegetarianDiv.appendChild(vegetarianButton);
+  vegetarianDiv.appendChild(vegetarianLabel);
+  veganDiv.appendChild(veganButton);
+  veganDiv.appendChild(veganLabel);
+  optionsDiv.appendChild(vegetarianDiv);
+  optionsDiv.appendChild(veganDiv);
+  jsMenu.appendChild(optionsDiv);
+}
+
+// Render the list items to .js-menu
+// const options = createOptions()
+// appendItems(options)
+createOptions()
+
+// function appendOptions(element) {
+//   const jsMenu = document.querySelector('.js-menu');
+//   jsMenu.appendChild(element);
+// }
+
+// appendOptions(options);
 
 
 ///////BONUS GOODIES////////
