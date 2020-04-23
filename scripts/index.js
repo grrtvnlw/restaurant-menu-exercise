@@ -54,9 +54,17 @@ arrOfListItems.map(appendItems)
 
 // Add a click handler to each of the <li> elements
 // write the handleClick function 
+// function handleClick(e) {
+//   console.log(e.target.textContent);
+// }
+
 function handleClick(e) {
-  console.log(e.target.textContent);
+  const menuItem = (e.target.textContent);
+  // console.log(menuItem)
+  const cards = menu[menuItem].map(itemToCard);
+  cards.map(appendCardToMainContent);
 }
+
 
 const listElement = document.querySelector('li');
 // console.log(listElement)
@@ -107,11 +115,11 @@ appendCardToMainContent(itemToCard(menu.lunch[2]));
 
 ///////BONUS GOODIES////////
 
-function handleClick(e) {
-  let element = event.target;
-  if (element.style.backgroundColor === "orange") {
-    element.style.backgroundColor = "white";
-  } else {
-    element.style.backgroundColor = "orange";
-  }
-}
+// function handleClick(e) {
+//   let element = event.target;
+//   if (element.style.backgroundColor === "orange") {
+//     element.style.backgroundColor = "white";
+//   } else {
+//     element.style.backgroundColor = "orange";
+//   }
+// }
