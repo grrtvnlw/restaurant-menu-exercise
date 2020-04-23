@@ -62,7 +62,11 @@ function handleClick(e) {
   const menuItem = (e.target.textContent);
   // console.log(menuItem)
   const cards = menu[menuItem].map(itemToCard);
-  cards.map(appendCardToMainContent);
+  cards.map(appendCardToMainContent);  
+  let container = document.querySelector('.js-main-content');
+  if (container.style.textContent != "") {
+    container.style.textContent = '';
+  }
 }
 
 
@@ -96,10 +100,15 @@ function itemToCard(obj) {
   itemDiv.setAttribute('class', 'card');
   const itemH2 = document.createElement('h2');
   const itemH3 = document.createElement('h3');
+  const pic = document.createElement('img')
   itemH2.textContent = obj.name;
   itemH3.textContent = obj.price;
+  pic.setAttribute('src', obj.photo);
+  pic.style.width = "80%";
+  // pic.style.height = "80%"
   itemDiv.appendChild(itemH2);
   itemDiv.appendChild(itemH3);
+  itemDiv.appendChild(pic)
   return itemDiv
 }
 
@@ -111,7 +120,7 @@ function appendCardToMainContent(card) {
   container.appendChild(card)
 }
 
-appendCardToMainContent(itemToCard(menu.lunch[2]));
+// appendCardToMainContent(itemToCard(menu.lunch[2]));
 
 ///////BONUS GOODIES////////
 
