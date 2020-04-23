@@ -53,27 +53,22 @@ arrOfListItems.map(appendItems)
 // Medium exercise: Handle category list click
 
 // Add a click handler to each of the <li> elements
-// write the handleClick function 
-// function handleClick(e) {
-//   console.log(e.target.textContent);
-// }
-
 function handleClick(e) {
   const menuItem = (e.target.textContent);
-  // console.log(menuItem)
   const cards = menu[menuItem].map(itemToCard);
-  cards.map(appendCardToMainContent);  
-  let container = document.querySelector('.js-main-content');
-  if (container.style.textContent != "") {
-    container.style.textContent = '';
+  const container = document.querySelector('.js-main-content');
+  // Update click handler / Clear out the .js-main-content area 
+  if (container.innerHTML.length > 0) {
+    container.innerHTML = ""; 
+    cards.map(appendCardToMainContent); 
+  } else {
+    cards.map(appendCardToMainContent); 
   }
 }
-
-
-const listElement = document.querySelector('li');
 // console.log(listElement)
 
 // add the click event listener on the specific element
+const listElement = document.querySelector('li');
 listElement.addEventListener('click', handleClick)
 
 // write a function to add the click event listener to an array of elements
@@ -111,7 +106,6 @@ function itemToCard(obj) {
   itemDiv.appendChild(pic)
   return itemDiv
 }
-
 // console.log(itemToCard(menu.lunch[0]))
 
 // Create an appendCardToMainContent function
@@ -120,7 +114,7 @@ function appendCardToMainContent(card) {
   container.appendChild(card)
 }
 
-// appendCardToMainContent(itemToCard(menu.lunch[2]));
+
 
 ///////BONUS GOODIES////////
 
