@@ -84,7 +84,6 @@ console.log(getValue("dinner"))
 
 // Create an itemToCard function
 function itemToCard(obj) {
-  const container = document.querySelector('.js-main-content');
   const itemDiv = document.createElement('div');
   itemDiv.setAttribute('class', 'card');
   const itemH2 = document.createElement('h2');
@@ -93,11 +92,19 @@ function itemToCard(obj) {
   itemH3.textContent = obj.price;
   itemDiv.appendChild(itemH2);
   itemDiv.appendChild(itemH3);
-  container.appendChild(itemDiv)
-
+  return itemDiv
 }
 
-console.log(itemToCard(menu.lunch[0]))
+// console.log(itemToCard(menu.lunch[0]))
+
+// Create an appendCardToMainContent function
+function appendCardToMainContent(card) {
+  const container = document.querySelector('.js-main-content');
+  container.appendChild(card)
+}
+
+appendCardToMainContent(itemToCard(menu.lunch[2]));
+
 ///////BONUS GOODIES////////
 
 function handleClick(e) {
